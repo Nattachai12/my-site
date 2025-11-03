@@ -1,5 +1,226 @@
 <!doctype html>
-<html>
-  <head><meta charset="utf-8"><title>My Site</title></head>
-  <body><h1>Hello from GitHub Pages</h1><p>ไอ่เชี่ยต้อป</p></body>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BQ — Creative Studio</title>
+<style>
+  :root{
+    --bg:#0b0b0b;
+    --fg:#f6f6f6;
+    --muted:#bdbdbd;
+    --accent:#ffd166;
+    --card:#151515;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* Header */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,11,11,.7);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid #1f1f1f}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;gap:.6rem;align-items:center;font-weight:700;letter-spacing:.06em}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+  .menu{display:flex;gap:1.2rem}
+  .menu a{opacity:.85}
+  .menu a:hover{opacity:1}
+  .burger{display:none;cursor:pointer;border:1px solid #2a2a2a;border-radius:8px;padding:8px}
+  .burger span{display:block;width:22px;height:2px;background:#eaeaea;margin:4px 0}
+
+  /* Mobile menu sheet */
+  .sheet{display:none;background:#0f0f0f;border-top:1px solid #1f1f1f}
+  .sheet a{display:block;padding:14px 20px;border-bottom:1px solid #171717}
+
+  /* Hero */
+  .hero{position:relative;isolation:isolate}
+  .hero .wrap{padding:84px 20px 48px}
+  .badge{display:inline-flex;gap:.5rem;align-items:center;border:1px solid #2a2a2a;border-radius:999px;padding:6px 10px;color:var(--muted);font-size:.85rem}
+  .badge .pill{display:inline-flex;gap:.35rem;align-items:center;background:#181818;border:1px solid #272727;border-radius:999px;padding:4px 10px;color:#eaeaea}
+  .hero h1{margin:14px 0 10px;font-size:clamp(34px,6vw,64px);line-height:1.05;letter-spacing:.01em}
+  .hero p{max-width:640px;color:var(--muted);margin:0 0 24px}
+  .cta{display:inline-flex;gap:.6rem;align-items:center;background:var(--accent);color:#141414;border-radius:12px;padding:12px 16px;font-weight:700}
+  .cta:hover{filter:brightness(1.05)}
+  /* Hero media placeholder */
+  .hero-media{margin-top:28px;border-radius:16px;overflow:hidden;border:1px solid #222}
+  .hero-media .ph{
+    aspect-ratio:16/9;
+    background:
+      radial-gradient(1200px 400px at 50% 0%, rgba(255,209,102,.15), transparent 60%),
+      linear-gradient(180deg, #1a1a1a, #0e0e0e 60%);
+    display:grid;place-items:center;color:#ececec;
+  }
+  .hero-media .ph span{opacity:.75}
+
+  /* Cards / Sections */
+  .section{padding:56px 0}
+  .section h2{font-size:clamp(22px,3.2vw,30px);margin:0 0 18px;letter-spacing:.02em}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(12,1fr)}
+  .card{grid-column:span 12;background:var(--card);border:1px solid #1f1f1f;border-radius:16px;overflow:hidden}
+  .card-media{background:#101010;border-bottom:1px solid #1f1f1f;display:grid;place-items:center;aspect-ratio:16/10}
+  .card-media span{color:#d6d6d6;opacity:.75}
+  .card-body{padding:16px 16px 18px}
+  .eyebrow{font-size:.8rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .card h3{margin:6px 0 6px;font-size:1.15rem}
+  .card p{margin:0;color:#cfcfcf}
+
+  @media (min-width:720px){
+    .card{grid-column:span 4}
+  }
+
+  /* Footer */
+  footer{border-top:1px solid #1f1f1f;background:#0e0e0e;margin-top:18px}
+  .footer-grid{display:grid;gap:14px;padding:28px 0;grid-template-columns:1fr}
+  .quote{font-style:italic;opacity:.9}
+  .links{display:flex;gap:14px;flex-wrap:wrap}
+  .muted{color:var(--muted)}
+  .tiny{font-size:.85rem}
+
+  /* Utilities */
+  .sr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+</style>
+<script>
+  // Tiny burger toggle (no dependencies)
+  addEventListener('DOMContentLoaded', () => {
+    const b = document.querySelector('.burger');
+    const s = document.querySelector('.sheet');
+    b?.addEventListener('click', () => {
+      s.style.display = s.style.display === 'block' ? 'none' : 'block';
+      b.setAttribute('aria-expanded', s.style.display === 'block');
+    });
+  });
+</script>
+</head>
+<body>
+
+<header role="banner">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="dot" aria-hidden="true"></span>
+      <span>BQ Studio</span>
+    </a>
+    <nav class="menu" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#course">Course</a>
+      <a href="#works">Works</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="burger" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div id="mobile-menu" class="sheet">
+    <a href="#home">Home</a>
+    <a href="#course">Course</a>
+    <a href="#works">Works</a>
+    <a href="#about">About</a>
+  </div>
+</header>
+
+<main id="home" class="hero">
+  <div class="wrap">
+    <div class="badge">
+      <span class="pill"><span aria-hidden="true">●</span> Producer</span>
+      <span class="pill"><span aria-hidden="true">●</span> YouTuber</span>
+      <span class="pill"><span aria-hidden="true">●</span> Creative</span>
+    </div>
+
+    <h1>Make. Learn. Share.</h1>
+    <p>A minimalist landing page template for creators—clean hero, bold type, and a card grid for highlights. Swap the placeholders with your own media and copy.</p>
+    <a class="cta" href="#course">See Courses →</a>
+
+    <div class="hero-media" aria-label="Featured image">
+      <div class="ph"><span>Hero 16:9 Placeholder</span></div>
+    </div>
+  </div>
+</main>
+
+<section id="course" class="section">
+  <div class="wrap">
+    <h2>Featured</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="card-media"><span>Card Image</span></div>
+        <div class="card-body">
+          <div class="eyebrow">Workshop</div>
+          <h3>Reverse-engineering a hit song</h3>
+          <p>Hands-on arranging, sound selection, and mixing. Includes project review and feedback.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><span>Card Image</span></div>
+        <div class="card-body">
+          <div class="eyebrow">Production</div>
+          <h3>“Prod by” Breakdown</h3>
+          <p>From idea to bounce: composition, drums, FX, and a quick master for release-ready demos.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><span>Card Image</span></div>
+        <div class="card-body">
+          <div class="eyebrow">Studio</div>
+          <h3>Dream Room Tour</h3>
+          <p>Signal flow, acoustic treatment, and the little tools that speed up your workflow.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="works" class="section">
+  <div class="wrap">
+    <h2>Works</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="card-media"><span>Artwork</span></div>
+        <div class="card-body">
+          <div class="eyebrow">Collab</div>
+          <h3>Single — Title Here</h3>
+          <p>Short blurb about the track or project. Link this card to Spotify, YouTube, or a case study.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><span>Artwork</span></div>
+        <div class="card-body">
+          <div class="eyebrow">Score</div>
+          <h3>Short Film — Title</h3>
+          <p>One or two lines describing your role and the tools you used.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><span>Artwork</span></div>
+        <div class="card-body">
+          <div class="eyebrow">Remix</div>
+          <h3>Remix — Title</h3>
+          <p>Keep copy concise; use the card image to carry most of the vibe.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="wrap">
+    <h2>About</h2>
+    <p class="muted">Write a short bio, where you’re based, and what you offer (private lessons, custom production, content, etc.). Add contact links here or in the footer.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="quote">“Live every day like it’s your last.”</div>
+    <div class="links">
+      <a class="muted tiny" href="#home">Home</a>
+      <a class="muted tiny" href="#course">Course</a>
+      <a class="muted tiny" href="#works">Works</a>
+      <a class="muted tiny" href="#about">About</a>
+    </div>
+    <div class="muted tiny">© <span id="y"></span> Your Name</div>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
 </html>
